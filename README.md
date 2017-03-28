@@ -1,5 +1,8 @@
 # cans-plugin-modal-store
 
+[![npm](https://img.shields.io/npm/v/cans-plugin-modal-store.svg)](https://www.npmjs.com/package/cans-plugin-modal-store)
+[![circle](https://circleci.com/gh/djyde/cans-plugin-modal-store.svg?style=shield)](https://circleci.com/gh/djyde/cans-plugin-modal-store)
+
 cans plugin for creating modal store.
 
 ## Usage
