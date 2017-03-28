@@ -1,6 +1,6 @@
 {
   "name": "cans-plugin-modal-store",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "cans plugin for creating modal stores",
   "main": "dist/cansPluginModalStore.common.js",
   "scripts": {
