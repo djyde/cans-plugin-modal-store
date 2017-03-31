@@ -2,8 +2,11 @@
 
 var cans_mobx = require('cans/mobx');
 
-var modalStorePlugin = function (names) {
-  return {
+var modalStorePlugin = function (app, options) {
+  if ( options === void 0 ) options = {};
+
+  var names = options.names || [];
+  app.model({
     namespace: 'modals',
     observable: function (app) {
       var stateMap = {};
@@ -29,11 +32,8 @@ var modalStorePlugin = function (names) {
           })
         });
       });
-      // TODO: cannot set models directory
-      app.models.modals = stateMap;
       return stateMap
     }
-  }
+  });
 };
-
 module.exports = modalStorePlugin;

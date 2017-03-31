@@ -1,7 +1,8 @@
 import { observable, action } from 'cans/mobx'
 
-const modalStorePlugin = (names) => {
-  return {
+const modalStorePlugin = (app, options = {}) => {
+  const names = options.names || []
+  app.model({
     namespace: 'modals',
     observable: app => {
       const stateMap = {}
@@ -27,11 +28,8 @@ const modalStorePlugin = (names) => {
           })
         })
       })
-      // TODO: cannot set models directory
-      app.models.modals = stateMap
       return stateMap
     }
-  }
+  })
 }
-
 module.exports = modalStorePlugin
