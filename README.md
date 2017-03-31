@@ -14,7 +14,7 @@ import Modal from '/path/to/Modal'
 
 const app = cans()
 
-app.use(modalStorePlugin(['user']))
+app.use(modalStorePlugin, { names: ['user'] })
 
 const UserModal = inject(({ models }) => {
   return (
@@ -35,7 +35,11 @@ const App = inject(({ models }) => {
 })
 ```
 
-## property
+### options
+
+- names: string[] - Array of name
+
+### observable property
 
 - visible: boolean.
 - confirmLoading: boolean. Loading status.
