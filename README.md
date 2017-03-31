@@ -37,15 +37,21 @@ const App = inject(({ models }) => {
 
 ### options
 
-- names: string[] - Array of name
+- modals
+  - name: string - modal name
+  - emptyRecord: any - default modal record. `{}` is by default
+  - title: (record) => string | Element - function that compute the modal title
 
 ### observable property
 
 - visible: boolean.
-- confirmLoading: boolean. Loading status.
+- title: string | Element - Computed modal value
+- record: any - Modal record
+- resetRecord(): reset record to `emptyRecord`
+- confirmLoading: boolean. Loading status
 - startLoading(): set `confirmLoading` to true
 - stopLoading(): set `confirmLoading` to false
-- show(): set `visible` to true
+- show(record): set `visible` to true. `record` is optional
 - hide(): set `visible` to false
 
 # License

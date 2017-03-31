@@ -1,18 +1,32 @@
 import { observable, action } from 'cans/mobx'
 
+const noop = () => {}
+
 const modalStorePlugin = (app, options = {}) => {
-  const names = options.names || []
+  const modals = options.modals || []
   app.model({
     namespace: 'modals',
     observable: app => {
       const stateMap = {}
-      names.forEach(name => {
-        stateMap[name] = observable({
+      modals.forEach(modal => {
+        const emptyRecord = modal.emptyRecord || {}
+        const titleFn = modal.title || noop
+        stateMap[modal.name] = observable({
           visible: false,
           confirmLoading: false,
+          record: emptyRecord,
 
-          show: action.bound(function () {
+          show: action.bound(function (record = emptyRecord) {
+            this.record = record
             this.visible = true
+          }),
+
+          get title () {
+            return titleFn(this.record) || ''
+          },
+
+          resetRecord: action.bound(function () {
+            this.record = emptyRecord
           }),
 
           hide: action.bound(function () {
